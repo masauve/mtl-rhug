@@ -17,7 +17,7 @@
 		           type : "POST",
 		           data: JSON.stringify(obj)
 		       })
-		       .done (function(data) { $('.weather-data').html(data) })
+		       .done (function(data) { $('.weather-data').append(JSON.stringify(obj)) })
 		       .fail (function(jqXHR, textStatus)  { alert("Error "+textStatus); })
 		       ;
 	   
