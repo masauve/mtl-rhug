@@ -13,8 +13,10 @@
 			    obj,
 			    function(data, textStatus, jqXHR)
 			    {
+		    alert("SUCCESS");
 		  			var jsonString = JSON.stringify(data);
-		  			 $('.weather-data').append(jsonString);			
+		  			 $('.weather-data').append(jsonString);	
+		  			 		
 			    }
 	 		)	
    });	
