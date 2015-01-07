@@ -7,11 +7,10 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
    <script>
    $(document).ready(function() {
-	    $.ajax({
-	        url: "http://rest-service.guides.spring.io/greeting"
+	    $.post({
+	        url: "http://services-msauve.app.mtl.rhug.ca/weather"
 	    }).then(function(data) {
-	       $('.greeting-id').append(data.id);
-	       $('.greeting-content').append(data.content);
+	       $('.weather-data').append(data);
 	    });
 	});
    </script>
@@ -21,9 +20,7 @@
   
         <div>
             <p class="weather-data">WEATHER: </p>
-   
-            <p class="greeting-id">The ID is </p>
-            <p class="greeting-content">The content is </p>
-      </div>
+
+	   </div>
 </body>
 </html>
