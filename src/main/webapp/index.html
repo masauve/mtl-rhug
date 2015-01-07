@@ -13,10 +13,12 @@
 	   var jqxhr =
 		       $.ajax({
 		           url: "http://services-msauve.app.mtl.rhug.ca/weather",
-		           type : "POST"
+		           processData : false,
+		           type : "POST",
+		           data: JSON.stringify(obj)
 		       })
 		       .done (function(data) { $('.weather-data').html(data) })
-		       .fail (function(jqXHR, textStatus)  { alert(jqXHR.responseText)   ; })
+		       .fail (function(jqXHR, textStatus)  { alert(jQuery.parseJSON(jqXHR.responseText))   ; })
 		       ;
 	   
    });
