@@ -7,16 +7,17 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
    <script>
    $(document).ready(function() {
-	   $.ajax({ url: 'services-msauve.app.mtl.rhug.ca/weather', 
-		   		dataType: 'text',
-		   		data: JSON.stringify("{'city':'Toronto'}"),
-		   	    type: 'post', 
-		   	    contentType: 'application/json; charset=utf-8', 
-		   	    success: function( data, textStatus, jQxhr )
-		   	   		{ alert(data) }, 
-		   	   	error: function( jqXhr, textStatus, errorThrown )
-		   	   		{ alert("ERROR")
-		   	   		 } });
+	  var obj =  {"city":"Toronto","country":"Canada"}
+	
+	  $.post("http://services-msauve.app.mtl.rhug.ca/weather",
+			    obj,
+			    function(data, textStatus, jqXHR)
+			    {
+		  			var jsonString = JSON.stringify(data);
+		  			 $('.weather-data').append(jsonString);			
+			    }
+	 		)	
+   });	
 
    </script>
 
