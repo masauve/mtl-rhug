@@ -6,14 +6,19 @@
   <title>Welcome to OpenShift</title>
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
    <script>
-   $(document).ready(function() {
-	    $.ajax({
-	    	type: "POST",
-	        url: "http://services-msauve.app.mtl.rhug.ca/weather"
-	    }).then(function(data) {
-	       $('.weather-data').append(data);
-	    });
-	});
+
+   $.ajax({
+       type: "POST",
+       url: "http://services-msauve.app.mtl.rhug.ca/weather",
+       // The key needs to match your method's input parameter (case-sensitive).       data: JSON.stringify({ Markers: markers }),
+       contentType: "application/json; charset=utf-8",
+       dataType: "json",
+       success: function(data){$('.weather-data').append(data);},
+       failure: function(errMsg) {
+           alert(errMsg);
+       }
+   });
+
    </script>
 
 </head>
