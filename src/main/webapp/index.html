@@ -9,6 +9,7 @@
    $(document).ready(function() {
 	   $.ajax({ url: 'services-msauve.app.mtl.rhug.ca/weather', 
 		   		dataType: 'text',
+		   		data: JSON.stringify("{'city':'Toronto'}"),
 		   	    type: 'post', 
 		   	    contentType: 'application/json; charset=utf-8', 
 		   	    success: function( data, textStatus, jQxhr )
