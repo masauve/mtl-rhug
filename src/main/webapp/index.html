@@ -18,7 +18,7 @@
 		           data: JSON.stringify(obj)
 		       })
 		       .done (function(data) { $('.weather-data').html(data) })
-		       .fail (function()  { alert("Error ")   ; })
+		       .fail (function(jqXHR, textStatus)  { alert("Error "+textStatus)   ; })
 		       ;
 	   
    });
