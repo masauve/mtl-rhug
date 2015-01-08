@@ -7,9 +7,13 @@
    <script src="jquery.js"></script>
    <script>
    $(document).ready(function() {
-	   var obj =  {"city":"Toronto","country":"Canada"};
+	   $("#submit").click(function(){
+		   var city = $("#city").val();
+		   var country = $("#country").val();
 
-	   var jqxhr =
+		   var obj =  {"city": city ,"country": country};
+
+	   		var jqxhr =
 		       $.ajax({
 		           url: "http://services-msauve.app.mtl.rhug.ca/weather",
 				   contentType : "application/json", 
@@ -20,19 +24,28 @@
 		       .done (function(data) { $('.weather-data').append(JSON.stringify(data)) })
 		       .fail (function(jqXHR, textStatus)  { alert("Error "+textStatus); })
 		       ;
-	   
+	   });	   
    });
 	  
-   	function form_to_json (selector) {
-	   var ary = $(selector).serializeArray();
-	   var obj = {};
-	   for (var a = 0; a < ary.length; a++) obj[ary[a].name] = ary[a].value;
-	   return obj;
-	 }
+   	
    </script>
 
 </head>
 <body>
+ 
+<div id="mainform">
+<div id="form">
+<h3>Information Météo</h3>
+<div>
+<label>Ville :</label>
+<input id="city" type="text">
+<label>Pays :</label>
+<input id="country" type="text">
+<input id="submit" type="button" value="Submit">
+</div>
+</div>
+</div>
+ 
   
         <div>
             <p class="weather-data">WEATHER: </p>
