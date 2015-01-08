@@ -24,10 +24,10 @@
 		       })
 		       .done (function(data) { 
 			       var weather = data.data;
-			       $('.weather-data').html(JSON.stringify(weather.current_condition[temp_C]))
-//				   $('.cur_temp').html(data.data.current_condition[temp_C]+'&deg;C | -11&deg;F')
-						 
-				   
+			       var currentCondition = weather.current_condition[0];
+			       $('.weather-data').html(JSON.stringify(weather)
+				   $('.cur_temp').html(current_condition.temp_C+'&deg;C | '+current_condition.temp_F+'&deg;F')
+						 				   
 				   $('.details').show();
 				  })
 		       .fail (function(jqXHR, textStatus)  { alert("Error "+textStatus); })
