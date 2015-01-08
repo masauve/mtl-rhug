@@ -26,7 +26,7 @@
 			      
 			       $('.weather-data').append(JSON.stringify(data)) 
 				   $('.weather-city').html("Météo pour:"+city)
-				   $('.details.weather-lat').html(""+data.coord.lat)  
+				
 				   $('.details.weather-long').html(""+data.coord.lon)
 				   
 				   
@@ -58,9 +58,9 @@
 <div class="details">  
   
   <p class="weather-city"/>
-
-  <label>Latitude: </label> <label class="weather-lat"></label>
-  <label>Longitude: </label><label class="weather-long"></label>
+  
+     Latitude:  <label class="weather-lat"></label>
+     Longitude: <label class="weather-long"></label>
  </div> 
  
   <div>
