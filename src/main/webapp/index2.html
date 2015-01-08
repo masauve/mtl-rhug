@@ -17,15 +17,16 @@
        })
        .done (function(data) { 
            data.forEach(function(dataElem){
-			var o = new Option(dataElem.city,"{'city':"+ dataElem.city+",'country':"+dataElem.country+"}");
+			var o = new Option(dataElem.city,dataElem.city+","+dataElem.country);
 			$(o).html(dataElem.city);
 			$('#city').append(o);
               })
         })
 	   
 	   $("#submit").click(function(){
-		   var city = $("#city").val();
-
+		   var city = $("#city").val().split(",");
+		   var obj =  {"city": city[0] ,"country": country[1]};
+		   
 		   var weekday=new Array(7);
 		   weekday[0]="Lundi";
 		   weekday[1]="Mardi";
@@ -41,7 +42,7 @@
 				   contentType : "application/json", 
 			       processData : false,
 		           type : "POST",
-		           data: city
+		           data: JSON.stringify(city)
 		       })
 		       .done (function(data) { 
 			       var weather = data.data;
