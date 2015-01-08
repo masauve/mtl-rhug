@@ -17,7 +17,7 @@
        })
        .done (function(data) { 
            data.forEach(function(dataElem){
-			var o = new Option(dataElem.city,{"city": dataElem.city ,"country": dataElem.country});
+			var o = new Option(dataElem.city,"{'city':"+ dataElem.city+",'country':"+dataElem.country+"}");
 			$(o).html(dataElem.city);
 			$('#city').append(o);
               })
