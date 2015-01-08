@@ -25,6 +25,7 @@
 		       .done (function(data) { 
 			       var weather = data.data;
 			       var currentCondition = weather.current_condition[0];
+			       var forecast = weather.weather;
 			       $('.weather-data').html(JSON.stringify(weather))
 				   $('.cur_temp').html(currentCondition.temp_C+'&deg;C | '+currentCondition.temp_F+'&deg;F')
 				   $('.cur_desc').html(currentCondition.lang_fr[0].value)	
@@ -32,7 +33,7 @@
 				   $('.cur_wind').html(currentCondition.winddir16Point+' à '+currentCondition.windspeedKmph+' km/h')		   
    				   $("#cur_icon").attr("src",currentCondition.weatherIconUrl[0].value);
 
-                   $('.forecast0_temp').html(weather.weather.e[0].maxtempC+'&deg;C | '+weather.weather.e[0].maxtempF+'&deg;F')
+                   $('.forecast0_temp').html(forecast[0].maxtempC+'&deg;C | '+forecast[0].maxtempF+'&deg;F')
 					   				   
 				 
 				   $('.details').show();
