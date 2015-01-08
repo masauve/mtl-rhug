@@ -83,14 +83,16 @@ public class DBServlet extends HttpServlet {
 	        String query = "select * from countries;";
 	        ResultSet rs = stmt.executeQuery(query);
 	        ResultSetMetaData rsmd= rs.getMetaData();
+	        writer.beginArray();
 	        while(rs.next()) {
-	        	 writer.beginObject();
+	        	writer.beginObject();
 	        	   for(int idx=1; idx<=rsmd.getColumnCount(); idx++) {
 	        	     writer.name(rsmd.getColumnLabel(idx)); 
 	        	     writer.value(rs.getString(idx));
 	        	   }
-	        	   writer.endObject();
+	        	  writer.endObject();
 	        	}
+	        writer.endArray();
 	        	
 		}
 		catch (NamingException nameExc)
