@@ -37,6 +37,7 @@
 			       forecast.forEach(function(day) {
 			    	   $('.forecast'+count+'_maxtemp').html(day.maxtempC+'&deg;C | '+ day.maxtempF+'&deg;F');
 			    	   $('.forecast'+count+'_mintemp').html(day.mintempC+'&deg;C | '+ day.mintempF+'&deg;F');
+			    	   $('.for'+count+'_date').html(day.date);
 			    	   $("#for_icon"+count).attr("src",day.hourly[3].weatherIconUrl[0].value);
 			    	   count++;
 			    	});
@@ -71,6 +72,27 @@
 <table>
 <tr>
 <td align="left" valign="top" style="width:175px;">
+ <h3>Maintenant</h3>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <h3 class="for_date0"></h3>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <h3 class="for_date1"></h3>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <h3 class="for_date2"></h3>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <h3 class="for_date3"></h3>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <h3 class="for_date4"></h3>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top" style="width:175px;">
    <img id="cur_icon" src="blank.png" width="60" height="60" />
 </td>
 <td align="left" valign="top" style="width:175px;">
@@ -94,29 +116,28 @@
 <tr>
 <td align="left" valign="top" style="width:175px;">
 <div class="cur_temp"></div>
-<p>Actuellement: <span class="cur_desc"></span></p>
 <p>Vent: <span class="cur_wind"></span></p>
 <p>Humidité: <span class="cur_hum"></span>%</p>
 </td>
 <td align="left" valign="top" style="width:175px;">
-  <p> Max: <span class="forecast0_maxtemp"></span>
-  <p> Min: <span class="forecast0_mintemp"></span>
+  <p> Max: <span class="forecast0_maxtemp"></span> </p>
+  <p> Min: <span class="forecast0_mintemp"></span> </p>
 </td>
 <td align="left" valign="top" style="width:175px;">
-  <p> Max: <span class="forecast1_maxtemp"></span>
-  <p> Min: <span class="forecast1_mintemp"></span>
+  <p> Max: <span class="forecast1_maxtemp"></span> </p>
+  <p> Min: <span class="forecast1_mintemp"></span> </p>
 </td>
 <td align="left" valign="top" style="width:175px;">
-  <p> Max: <span class="forecast2_maxtemp"></span>
-  <p> Min: <span class="forecast2_mintemp"></span>
+  <p> Max: <span class="forecast2_maxtemp"></span> </p>
+  <p> Min: <span class="forecast2_mintemp"></span> </p>
 </td>
 <td align="left" valign="top" style="width:175px;">
-  <p> Max: <span class="forecast3_maxtemp"></span>
-  <p> Min: <span class="forecast3_mintemp"></span>
+  <p> Max: <span class="forecast3_maxtemp"></span> </p>
+  <p> Min: <span class="forecast3_mintemp"></span> </p>
 </td>
 <td align="left" valign="top" style="width:175px;">
-  <p> Max: <span class="forecast4_maxtemp"></span>
-  <p> Min: <span class="forecast4_mintemp"></span>
+  <p> Max: <span class="forecast4_maxtemp"></span> </p>
+  <p> Min: <span class="forecast4_mintemp"></span> </p>
 </td>
 </tr>
 </table>
