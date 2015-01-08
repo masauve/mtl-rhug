@@ -33,8 +33,12 @@
 				   $('.cur_wind').html(currentCondition.winddir16Point+' à '+currentCondition.windspeedKmph+' km/h')		   
    				   $("#cur_icon").attr("src",currentCondition.weatherIconUrl[0].value);
 
-                   $('.forecast0_temp').html(forecast[0].maxtempC+'&deg;C | '+forecast[0].maxtempF+'&deg;F')
-					   				   
+				   var count =0;	
+			       forecast.forEach(function(day) {
+			    	   $('.forecast'+count+'_temp').html(day.maxtempC+'&deg;C | '+ day.maxtempF+'&deg;F');
+			    	   count++;
+			    	});
+                      				   
 				 
 				   $('.details').show();
 				  })
@@ -69,6 +73,8 @@
 </td>
 <td align="left" valign="top" style="width:175px;">
 </td>
+<td align="left" valign="top" style="width:175px;">
+</td>
 </tr>
 <tr>
 <td align="left" valign="top" style="width:175px;">
@@ -79,8 +85,11 @@
 </td>
 <td align="left" valign="top" style="width:175px;">
   <div class="forecast0_temp"></div>
-
 </td>
+<td align="left" valign="top" style="width:175px;">
+  <div class="forecast1_temp"></div>
+</td>
+
 </tr>
 </table>
 </div>
