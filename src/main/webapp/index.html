@@ -25,10 +25,9 @@
 		       .done (function(data) { 
 			      
 			       $('.weather-data').append(JSON.stringify(data)) 
-				   $('.weather-city').html("Météo pour:"+city)
-				
-				   $('.weather-long').html(""+data.coord.lon)
-				   $('.weather-lat').html(""+data.coord.lat)
+				 
+				   $('.cur_temp').html(data.current_condition.temp_C+'&deg;C | -11&deg;F')
+						 
 				   
 				   $('.details').show()
 				  })
@@ -56,16 +55,18 @@
 </div>
   
 <div class="details">  
-  
-  <p class="weather-city"></p>
-  
-     Latitude:  <label class="weather-lat"></label>
-     Longitude: <label class="weather-long"></label>
- </div> 
- 
-  <div>
+<h3>Condition Actuelle</h3>
+<div class="cur_temp"></div>
+<p>Current: <span class="cur_desc">Light snow</span></p>
+<p>Wind: S at 8 mph/13.0 km/h</p>
+<p>Humidity: 63%</p>
+
+</div>
+
+<div>
       <p class="weather-data">WEATHER: </p>
-  </div>
+
+</div>
 	
 	
 	   
