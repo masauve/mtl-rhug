@@ -37,7 +37,7 @@
 			       forecast.forEach(function(day) {
 			    	   $('.forecast'+count+'_maxtemp').html(day.maxtempC+'&deg;C | '+ day.maxtempF+'&deg;F');
 			    	   $('.forecast'+count+'_mintemp').html(day.mintempC+'&deg;C | '+ day.mintempF+'&deg;F');
-
+			    	   $("#for_icon"+count).attr("src",day.hourly[0].weatherIconUrl[0].value);
 			    	   count++;
 			    	});
                       				   
@@ -74,9 +74,22 @@
    <img id="cur_icon" src="blank.png" width="60" height="60" />
 </td>
 <td align="left" valign="top" style="width:175px;">
+  <img id="for_icon0" src="blank.png" width="60" height="60" />
+</td>
+   
+<td align="left" valign="top" style="width:175px;">
+  <img id="for_icon1" src="blank.png" width="60" height="60" />
 </td>
 <td align="left" valign="top" style="width:175px;">
+  <img id="for_icon2" src="blank.png" width="60" height="60" />
 </td>
+<td align="left" valign="top" style="width:175px;">
+  <img id="for_icon3" src="blank.png" width="60" height="60" />
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <img id="for_icon4" src="blank.png" width="60" height="60" />
+</td>
+
 </tr>
 <tr>
 <td align="left" valign="top" style="width:175px;">
