@@ -24,7 +24,7 @@
 		       })
 		       .done (function(data) { 
 			       var weahter = data.data;
-			       $('.weather-data').html(JSON.stringify(weather.current_condition)) 
+			       $('.weather-data').html(JSON.stringify(weather[current_condition])) 
 //				   $('.cur_temp').html(data.data.current_condition[temp_C]+'&deg;C | -11&deg;F')
 						 
 				   
