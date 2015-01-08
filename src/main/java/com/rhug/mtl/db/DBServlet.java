@@ -38,7 +38,7 @@ public class DBServlet extends HttpServlet {
 												" (1, 'Montreal', 'Canada'), " +
 												" (2, 'Toronto', 'Canada'), " +
 												" (3, 'New York', 'USA'), "+
-												" (4, 'Tokyo', 'Japan')" +
+												" (4, 'Tokyo', 'Japan')," +
 												" (5, 'Moscow', 'Russia'); ";
 	
 	
