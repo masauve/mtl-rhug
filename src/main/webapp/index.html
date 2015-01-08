@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Welcome to OpenShift</title>
+  <title>Information Météo</title>
    <script src="jquery.js"></script>
    <script>
    $(document).ready(function() {
@@ -21,7 +21,10 @@
 		           type : "POST",
 		           data: JSON.stringify(obj)
 		       })
-		       .done (function(data) { $('.weather-data').append(JSON.stringify(data)) })
+		       .done (function(data) { 
+			       $('.weather-data').append(JSON.stringify(data)) 
+				   $('.weather-city').html(city)
+				  })
 		       .fail (function(jqXHR, textStatus)  { alert("Error "+textStatus); })
 		       ;
 	   });	   
@@ -33,7 +36,7 @@
 </head>
 <body>
  
-<div id="mainform">
+
 <div id="form">
 <h3>Information Météo</h3>
 <div>
@@ -41,15 +44,20 @@
 <input id="city" type="text">
 <label>Pays :</label>
 <input id="country" type="text">
-<input id="submit" type="button" value="Submit">
+<input id="submit" type="button" value="Obtenir la météo">
 </div>
 </div>
-</div>
+   
+  <div>
+  	<p class="weather-city"/>
+  </div> 
  
-  
-        <div>
-            <p class="weather-data">WEATHER: </p>
-
-	   </div>
+ 
+  <div>
+      <p class="weather-data">WEATHER: </p>
+  </div>
+	
+	
+	   
 </body>
 </html>
