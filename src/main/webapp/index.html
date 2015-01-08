@@ -7,6 +7,7 @@
    <script src="jquery.js"></script>
    <script>
    $(document).ready(function() {
+	   $('.details').hide();
 	   $("#submit").click(function(){
 		   var city = $("#city").val();
 		   var country = $("#country").val();
@@ -22,8 +23,12 @@
 		           data: JSON.stringify(obj)
 		       })
 		       .done (function(data) { 
+			      
 			       $('.weather-data').append(JSON.stringify(data)) 
-				   $('.weather-city').html(city)
+				   $('.weather-city').html("Météo pour:"+city)
+				   $('.weather-long').html(data.coord.lon)
+				   
+				   $('.details').show()
 				  })
 		       .fail (function(jqXHR, textStatus)  { alert("Error "+textStatus); })
 		       ;
@@ -51,6 +56,9 @@
   <div>
   	<p class="weather-city"/>
   </div> 
+  <div id="details">
+    <label>Longitude:</label><label id="weather-long"></label>
+  </div>
  
  
   <div>
