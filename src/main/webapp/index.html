@@ -27,6 +27,7 @@
 			       $('.weather-data').append(JSON.stringify(data)) 
 				   $('.weather-city').html("Météo pour:"+city)
 				   $('.weather-long').html(""+data.coord.lon)
+				   $('.weather-lat').html(""+data.coord.lat)  
 				   
 				   $('.details').show()
 				  })
@@ -52,13 +53,14 @@
 <input id="submit" type="button" value="Obtenir la météo">
 </div>
 </div>
-   
+  
+<div class="details">  
   <div>
   	<p class="weather-city"/>
   </div> 
- 
+  <label>Latitude:</label><label class="weather-lat"/>
   <label>Longitude:</label><label class="weather-long"/>
-  
+ </div> 
  
   <div>
       <p class="weather-data">WEATHER: </p>
