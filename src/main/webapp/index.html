@@ -23,12 +23,12 @@
 		           data: JSON.stringify(obj)
 		       })
 		       .done (function(data) { 
-			      
-			       $('.weather-data').html(JSON.stringify(data.data)) 
+			       var weahter = data.data;
+			       $('.weather-data').html(JSON.stringify(weather.current_condition)) 
 //				   $('.cur_temp').html(data.data.current_condition[temp_C]+'&deg;C | -11&deg;F')
 						 
 				   
-				   $('.details').show()
+				   $('.details').show();
 				  })
 		       .fail (function(jqXHR, textStatus)  { alert("Error "+textStatus); })
 		       ;
