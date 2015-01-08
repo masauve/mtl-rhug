@@ -54,8 +54,8 @@ public class DBServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().print(INSERT_SQL);
-		//perform(request,response);
+		//response.getWriter().print(INSERT_SQL);
+		perform(request,response);
 	}
 
 	/**
@@ -77,10 +77,8 @@ public class DBServlet extends HttpServlet {
 		    conn = datasource.getConnection();
 	        Statement stmt = conn.createStatement();
 	        stmt.executeUpdate(CREATE_TABLE_SQL);
-	        stmt.close();
 	        stmt = conn.createStatement();
 	        stmt.executeUpdate(INSERT_SQL);
-	        stmt.close();
 	        stmt=conn.createStatement();
 	        String query = "select * from Countries;";
 	        ResultSet rs = stmt.executeQuery(query);
