@@ -26,7 +26,22 @@ import com.google.gson.stream.JsonWriter;
 @WebServlet("/DBServlet")
 public class DBServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+
+	private static final String CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS `countries` ( "+
+					  								"`id` int(11) NOT NULL,"+
+					  								"`city` varchar(50) NOT NULL,"+
+					  								"`country` varchar(50) NOT NULL,"+
+					  								" PRIMARY KEY (`id`)" +
+					  								") ENGINE=MyISAM  DEFAULT CHARSET=utf8;";
+					
+	private static final String INSERT_SQL =    " INSERT IGNORE INTO `countries` (`id`, `city`, `country`) VALUES "+
+												" (1, 'Montreal', 'Canada'), " +
+												" (2, 'Toronto', 'Canada'), " +
+												" (3, 'New York', 'USA'), "+
+												" (4, 'Tokyo', 'Japan')" +
+												" (5, 'Moscow', 'Russia'); ";
+	
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -53,13 +68,19 @@ public class DBServlet extends HttpServlet {
 		res.setContentType("application/json; charset=UTF-8");
 		res.setCharacterEncoding("UTF-8");
 		JsonWriter writer = new JsonWriter(new OutputStreamWriter(res.getOutputStream(), "UTF-8"));
-		Connection result = null;
+		Connection conn = null;
 		try{
 		    InitialContext ic = new InitialContext();
 		    Context initialContext = (Context) ic.lookup("java:comp/env");
 		    DataSource datasource = (DataSource) initialContext.lookup("jdbc/MySQLDS");
-		    result = datasource.getConnection();
-	        Statement stmt = result.createStatement();
+		    conn = datasource.getConnection();
+	        Statement stmt = conn.createStatement();
+	        stmt.executeUpdate(CREATE_TABLE_SQL);
+	        stmt.close();
+	        stmt = conn.createStatement();
+	        stmt.executeUpdate(INSERT_SQL);
+	        stmt.close();
+	        stmt=conn.createStatement();
 	        String query = "select * from Countries;";
 	        ResultSet rs = stmt.executeQuery(query);
 	        ResultSetMetaData rsmd= rs.getMetaData();
