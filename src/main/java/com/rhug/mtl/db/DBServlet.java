@@ -80,7 +80,7 @@ public class DBServlet extends HttpServlet {
 	        stmt = conn.createStatement();
 	        stmt.executeUpdate(INSERT_SQL);
 	        stmt=conn.createStatement();
-	        String query = "select * from Countries;";
+	        String query = "select * from countries;";
 	        ResultSet rs = stmt.executeQuery(query);
 	        ResultSetMetaData rsmd= rs.getMetaData();
 	        while(rs.next()) {
