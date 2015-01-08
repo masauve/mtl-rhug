@@ -16,7 +16,11 @@
            type : "GET"
        })
        .done (function(data) { 
-           alert(JSON.stringify(data));
+           data.foreach(function(city){
+			var o = new Option(city.city,city.city+","+city.country);
+			$(o).html("option text");
+			$('#city').append(o);
+              })
         })
 	   
 	   $("#submit").click(function(){
@@ -80,7 +84,7 @@
 <h3>Information Météo</h3>
 <div>
 <label>Ville :</label>
-<input id="city" type="text">
+<select id="city"> </select>
 <label>Pays :</label>
 <input id="country" type="text">
 <input id="submit" type="button" value="Obtenir la météo">
