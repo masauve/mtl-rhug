@@ -54,7 +54,8 @@ public class DBServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		perform(request,response);
+		response.getWriter().print(INSERT_SQL);
+		//perform(request,response);
 	}
 
 	/**
