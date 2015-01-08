@@ -11,10 +11,18 @@
 	   $("#submit").click(function(){
 		   var city = $("#city").val();
 		   var country = $("#country").val();
-
 		   var obj =  {"city": city ,"country": country};
 
-	   		var jqxhr =
+		   var weekday=new Array(7);
+		   weekday[0]="Lundi";
+		   weekday[1]="Mardi";
+		   weekday[2]="Mercredi";
+		   weekday[3]="Jeudi";
+		   weekday[4]="Vendredi";
+		   weekday[5]="Samedi";
+		   weekday[6]="Dimanche";
+		   
+	   	   var jqxhr =
 		       $.ajax({
 		           url: "http://services-msauve.app.mtl.rhug.ca/weather",
 				   contentType : "application/json", 
@@ -37,7 +45,7 @@
 			       forecast.forEach(function(day) {
 			    	   $('.forecast'+count+'_maxtemp').html(day.maxtempC+'&deg;C | '+ day.maxtempF+'&deg;F');
 			    	   $('.forecast'+count+'_mintemp').html(day.mintempC+'&deg;C | '+ day.mintempF+'&deg;F');
-			    	   $('.for_date'+count).html(new Date(day.date).getDay());
+			    	   $('.for_date'+count).html(weekday[new Date(day.date).getDay()]);
 			    	   $("#for_icon"+count).attr("src",day.hourly[3].weatherIconUrl[0].value);
 			    	   count++;
 			    	});
