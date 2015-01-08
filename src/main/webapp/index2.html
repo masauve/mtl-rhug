@@ -16,7 +16,7 @@
            type : "GET"
        })
        .done (function(data) { 
-           data.foreach(function(dataElem){
+           data.forEach(function(dataElem){
 			var o = new Option(dataElem.city,dataElem.city+","+dataElem.country);
 			$(o).html("option text");
 			$('#city').append(o);
