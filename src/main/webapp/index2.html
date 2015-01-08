@@ -25,7 +25,7 @@
 	   
 	   $("#submit").click(function(){
 		   var city = $("#city").val();
-
+		   var cityString = JSON.stringify(city);
 		   var weekday=new Array(7);
 		   weekday[0]="Lundi";
 		   weekday[1]="Mardi";
