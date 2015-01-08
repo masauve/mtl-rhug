@@ -25,7 +25,7 @@
 	   
 	   $("#submit").click(function(){
 		   var city = $("#city").val();
-		   var cityString = JSON.stringify(city);
+
 		   var weekday=new Array(7);
 		   weekday[0]="Lundi";
 		   weekday[1]="Mardi";
@@ -41,7 +41,7 @@
 				   contentType : "application/json", 
 			       processData : false,
 		           type : "POST",
-		           data: JSON.stringify(city)
+		           data: city
 		       })
 		       .done (function(data) { 
 			       var weather = data.data;
