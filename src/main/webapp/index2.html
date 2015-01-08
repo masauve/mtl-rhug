@@ -8,6 +8,17 @@
    <script>
    $(document).ready(function() {
 	   $('.details').hide();
+
+	   $.ajax({
+           url: "/DBServlet",
+		   contentType : "application/json", 
+	       processData : false,
+           type : "GET"
+       })
+       .done (function(data) { 
+           alert(JSON.stringify(data));
+        })
+	   
 	   $("#submit").click(function(){
 		   var city = $("#city").val();
 		   var country = $("#country").val();
