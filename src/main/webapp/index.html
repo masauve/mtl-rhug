@@ -27,7 +27,8 @@
 			       var currentCondition = weather.current_condition[0];
 			       $('.weather-data').html(JSON.stringify(weather))
 				   $('.cur_temp').html(currentCondition.temp_C+'&deg;C | '+currentCondition.temp_F+'&deg;F')
-						 				   
+				   $('.cur_desc').html(currentCondition.lang_fr[0].value)	
+				   $('.cur_hum').html(currentCondition.humidity) 				   
 				   $('.details').show();
 				  })
 		       .fail (function(jqXHR, textStatus)  { alert("Error "+textStatus); })
@@ -54,11 +55,10 @@
 </div>
   
 <div class="details">  
-<h3>Condition Actuelle</h3>
 <div class="cur_temp"></div>
-<p>Current: <span class="cur_desc">Light snow</span></p>
-<p>Wind: S at 8 mph/13.0 km/h</p>
-<p>Humidity: 63%</p>
+<p>Actuellement: <span class="cur_desc"></span></p>
+<p>Vent: S at 8 mph/13.0 km/h</p>
+<p>Humidité: 63% <span class="cur_hum"></span>%</p>
 
 </div>
 
