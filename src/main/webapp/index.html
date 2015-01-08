@@ -37,7 +37,7 @@
 			       forecast.forEach(function(day) {
 			    	   $('.forecast'+count+'_maxtemp').html(day.maxtempC+'&deg;C | '+ day.maxtempF+'&deg;F');
 			    	   $('.forecast'+count+'_mintemp').html(day.mintempC+'&deg;C | '+ day.mintempF+'&deg;F');
-			    	   $('.for_date'+count).html(day.date);
+			    	   $('.for_date'+count).html(day.date.getDay());
 			    	   $("#for_icon"+count).attr("src",day.hourly[3].weatherIconUrl[0].value);
 			    	   count++;
 			    	});
