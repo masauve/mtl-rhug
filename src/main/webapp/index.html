@@ -26,8 +26,7 @@
 			      
 			       $('.weather-data').append(JSON.stringify(data)) 
 				   $('.weather-city').html("Météo pour:"+city)
-				   alert(data.coord.lon);
-				   $('.weather-long').html(JSON.parse(data).coord)
+				   $('.weather-long').html(""+data.coord.lon)
 				   
 				   $('.details').show()
 				  })
