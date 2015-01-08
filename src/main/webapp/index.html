@@ -30,6 +30,8 @@
 				   $('.cur_desc').html(currentCondition.lang_fr[0].value)	
 				   $('.cur_hum').html(currentCondition.humidity) 	
 				   $('.cur_wind').html(currentCondition.winddir16Point+' à '+currentCondition.windspeedKmph+' km/h')		   
+   				   $("#cur_icon").attr("src",currentCondition.weatherIconUrl[0].value);
+				 
 				   $('.details').show();
 				  })
 		       .fail (function(jqXHR, textStatus)  { alert("Error "+textStatus); })
@@ -56,11 +58,21 @@
 </div>
   
 <div class="details">  
+<table>
+<tr>
+<td align="left" valign="top" style="width:175px;">
+   <img id="cur_icon" src="blank.png" width="60" height="60" />
+</td>
+</tr>
+<tr>
+<td align="left" valign="top" style="width:175px;">
 <div class="cur_temp"></div>
 <p>Actuellement: <span class="cur_desc"></span></p>
 <p>Vent: <span class="cur_wind"></span></p>
 <p>Humidité: <span class="cur_hum"></span>%</p>
-
+</td>
+</tr>
+</table>
 </div>
 
 <div>
