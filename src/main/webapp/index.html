@@ -35,7 +35,9 @@
 
 				   var count =0;	
 			       forecast.forEach(function(day) {
-			    	   $('.forecast'+count+'_temp').html(day.maxtempC+'&deg;C | '+ day.maxtempF+'&deg;F');
+			    	   $('.forecast'+count+'_maxtemp').html(day.maxtempC+'&deg;C | '+ day.maxtempF+'&deg;F');
+			    	   $('.forecast'+count+'_mintemp').html(day.mintempC+'&deg;C | '+ day.mintempF+'&deg;F');
+
 			    	   count++;
 			    	});
                       				   
@@ -84,12 +86,25 @@
 <p>Humidité: <span class="cur_hum"></span>%</p>
 </td>
 <td align="left" valign="top" style="width:175px;">
-  <div class="forecast0_temp"></div>
+  <p> Max: <span class="forecast0_maxtemp"></span>
+  <p> Min: <span class="forecast0_mintemp"></span>
 </td>
 <td align="left" valign="top" style="width:175px;">
-  <div class="forecast1_temp"></div>
+  <p> Max: <span class="forecast1_maxtemp"></span>
+  <p> Min: <span class="forecast1_mintemp"></span>
 </td>
-
+<td align="left" valign="top" style="width:175px;">
+  <p> Max: <span class="forecast2_maxtemp"></span>
+  <p> Min: <span class="forecast2_mintemp"></span>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <p> Max: <span class="forecast3_maxtemp"></span>
+  <p> Min: <span class="forecast3_mintemp"></span>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <p> Max: <span class="forecast4_maxtemp"></span>
+  <p> Min: <span class="forecast4_mintemp"></span>
+</td>
 </tr>
 </table>
 </div>
