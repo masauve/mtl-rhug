@@ -14,6 +14,7 @@
 		   var country = $("#country").val();
 		   var obj =  {"city": city ,"country": country};
 
+       var apiUrl=process.env.API_URL;
 		   var weekday=new Array(7);
 		   weekday[0]="Lundi";
 		   weekday[1]="Mardi";
@@ -22,27 +23,27 @@
 		   weekday[4]="Vendredi";
 		   weekday[5]="Samedi";
 		   weekday[6]="Dimanche";
-		   
+
 	   	   var jqxhr =
 		       $.ajax({
-		           url: "http://services-msauve.app.mtl.rhug.ca/weather",
-				   contentType : "application/json", 
+		           url: apiUrl,
+				   contentType : "application/json",
 			       processData : false,
 		           type : "POST",
 		           data: JSON.stringify(obj)
 		       })
-		       .done (function(data) { 
+		       .done (function(data) {
 			       var weather = data.data;
 			       var currentCondition = weather.current_condition[0];
 			       var forecast = weather.weather;
 			       $('.weather-data').html(JSON.stringify(weather))
 				   $('.cur_temp').html(currentCondition.temp_C+'&deg;C | '+currentCondition.temp_F+'&deg;F')
-				   $('.cur_desc').html(currentCondition.lang_fr[0].value)	
-				   $('.cur_hum').html(currentCondition.humidity) 	
-				   $('.cur_wind').html(currentCondition.winddir16Point+' à '+currentCondition.windspeedKmph+' km/h')		   
+				   $('.cur_desc').html(currentCondition.lang_fr[0].value)
+				   $('.cur_hum').html(currentCondition.humidity)
+				   $('.cur_wind').html(currentCondition.winddir16Point+' à '+currentCondition.windspeedKmph+' km/h')
    				   $("#cur_icon").attr("src",currentCondition.weatherIconUrl[0].value);
 
-				   var count =0;	
+				   var count =0;
 			       forecast.forEach(function(day) {
 			    	   $('.forecast'+count+'_maxtemp').html(day.maxtempC+'&deg;C | '+ day.maxtempF+'&deg;F');
 			    	   $('.forecast'+count+'_mintemp').html(day.mintempC+'&deg;C | '+ day.mintempF+'&deg;F');
@@ -50,21 +51,21 @@
 			    	   $("#for_icon"+count).attr("src",day.hourly[3].weatherIconUrl[0].value);
 			    	   count++;
 			    	});
-                      				   
-				 
+
+
 				   $('.details').show();
 				  })
 		       .fail (function(jqXHR, textStatus)  { alert("Error "+textStatus); })
 		       ;
-	   });	   
+	   });
    });
-	  
-   	
+
+
    </script>
 
 </head>
 <body>
- 
+
 
 <div id="form">
 <h3>Information Météo</h3>
@@ -77,7 +78,7 @@
 </div>
 </div>
 <br/>
-<div class="details">  
+<div class="details">
 <table>
 <tr>
 <td align="left" valign="top" style="width:175px;">
@@ -107,7 +108,7 @@
 <td align="left" valign="top" style="width:175px;">
   <img id="for_icon0" src="blank.png" width="60" height="60" />
 </td>
-   
+
 <td align="left" valign="top" style="width:175px;">
   <img id="for_icon1" src="blank.png" width="60" height="60" />
 </td>
@@ -160,8 +161,8 @@
       <p class="weather-data"></p>
 
 </div>
-	
-	
-	   
+
+
+
 </body>
 </html>
