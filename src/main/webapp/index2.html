@@ -26,7 +26,6 @@
 	   $("#submit").click(function(){
 		   var city = $("#city").val().split(",");
 		   var obj =  {"city": city[0] ,"country": city[1]};
-       var apiUrl=process.env.API_URL;
 
 		   var weekday=new Array(7);
 		   weekday[0]="Lundi";
@@ -39,7 +38,7 @@
 
 	   	   var jqxhr =
 		       $.ajax({
-		           url: API_URL,
+		           url: "http://api-workshop.app.mtl.rhug.ca/weather",
 				   contentType : "application/json",
 			       processData : false,
 		           type : "POST",
