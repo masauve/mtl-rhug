@@ -1,0 +1,167 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Information Météo</title>
+   <script src="jquery.js"></script>
+   <script>
+   $(document).ready(function() {
+	   $('.details').hide();
+	   $("#submit").click(function(){
+		   var city = $("#city").val();
+		   var country = $("#country").val();
+		   var obj =  {"city": city ,"country": country};
+
+		   var weekday=new Array(7);
+		   weekday[0]="Lundi";
+		   weekday[1]="Mardi";
+		   weekday[2]="Mercredi";
+		   weekday[3]="Jeudi";
+		   weekday[4]="Vendredi";
+		   weekday[5]="Samedi";
+		   weekday[6]="Dimanche";
+
+	   	   var jqxhr =
+		       $.ajax({
+		           url: "http://api-workshop.app.mtl.rhug.ca/weather",
+				   contentType : "application/json",
+			       processData : false,
+		           type : "POST",
+		           data: JSON.stringify(obj)
+		       })
+		       .done (function(data) {
+			       var weather = data.data;
+			       var currentCondition = weather.current_condition[0];
+			       var forecast = weather.weather;
+			       $('.weather-data').html(JSON.stringify(weather))
+				   $('.cur_temp').html(currentCondition.temp_C+'&deg;C | '+currentCondition.temp_F+'&deg;F')
+				   $('.cur_desc').html(currentCondition.lang_fr[0].value)
+				   $('.cur_hum').html(currentCondition.humidity)
+				   $('.cur_wind').html(currentCondition.winddir16Point+' à '+currentCondition.windspeedKmph+' km/h')
+   				   $("#cur_icon").attr("src",currentCondition.weatherIconUrl[0].value);
+
+				   var count =0;
+			       forecast.forEach(function(day) {
+			    	   $('.forecast'+count+'_maxtemp').html(day.maxtempC+'&deg;C | '+ day.maxtempF+'&deg;F');
+			    	   $('.forecast'+count+'_mintemp').html(day.mintempC+'&deg;C | '+ day.mintempF+'&deg;F');
+			    	   $('.for_date'+count).html(weekday[new Date(day.date).getDay()]);
+			    	   $("#for_icon"+count).attr("src",day.hourly[3].weatherIconUrl[0].value);
+			    	   count++;
+			    	});
+
+
+				   $('.details').show();
+				  })
+		       .fail (function(jqXHR, textStatus)  { alert("Error "+textStatus); })
+		       ;
+	   });
+   });
+
+
+   </script>
+
+</head>
+<body>
+
+
+<div id="form">
+<h3>Information Météo</h3>
+<div>
+<label>Ville :</label>
+<input id="city" type="text">
+<label>Pays :</label>
+<input id="country" type="text">
+<input id="submit" type="button" value="Obtenir la météo">
+</div>
+</div>
+<br/>
+<div class="details">
+<table>
+<tr>
+<td align="left" valign="top" style="width:175px;">
+ <h3>Maintenant</h3>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <h3 class="for_date0"></h3>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <h3 class="for_date1"></h3>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <h3 class="for_date2"></h3>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <h3 class="for_date3"></h3>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <h3 class="for_date4"></h3>
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top" style="width:175px;">
+   <img id="cur_icon" src="blank.png" width="60" height="60" />
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <img id="for_icon0" src="blank.png" width="60" height="60" />
+</td>
+
+<td align="left" valign="top" style="width:175px;">
+  <img id="for_icon1" src="blank.png" width="60" height="60" />
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <img id="for_icon2" src="blank.png" width="60" height="60" />
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <img id="for_icon3" src="blank.png" width="60" height="60" />
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <img id="for_icon4" src="blank.png" width="60" height="60" />
+</td>
+
+</tr>
+<tr>
+<td align="left" valign="top" style="width:175px;">
+<span class="cur_desc"></span>
+<div class="cur_temp"></div>
+<p>Vent: <span class="cur_wind"></span></p>
+<p>Humidité: <span class="cur_hum"></span>%</p>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <p> Max: <span class="forecast0_maxtemp"></span> </p>
+  <p> Min: <span class="forecast0_mintemp"></span> </p>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <p> Max: <span class="forecast1_maxtemp"></span> </p>
+  <p> Min: <span class="forecast1_mintemp"></span> </p>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <p> Max: <span class="forecast2_maxtemp"></span> </p>
+  <p> Min: <span class="forecast2_mintemp"></span> </p>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <p> Max: <span class="forecast3_maxtemp"></span> </p>
+  <p> Min: <span class="forecast3_mintemp"></span> </p>
+</td>
+<td align="left" valign="top" style="width:175px;">
+  <p> Max: <span class="forecast4_maxtemp"></span> </p>
+  <p> Min: <span class="forecast4_mintemp"></span> </p>
+</td>
+</tr>
+</table>
+</div>
+<br/>
+<br/>
+
+<h3> JSON: </h3>
+<div>
+      <p class="weather-data"></p>
+
+</div>
+
+
+
+</body>
+</html>
